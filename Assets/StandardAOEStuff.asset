@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7849989c626b60a419053c5b05537799, type: 3}
+  m_Name: StandardAOEStuff
+  m_EditorClassIdentifier: 
+  Mechanics:
+  - Name: A
+    Time: 0
+    MechanicVariants:
+    - BossActions:
+      - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
+        Target: 0
+        TargetCount: 0
+        Time: 2
+        CastTime: 5
+        Location: {x: 2.25, y: 0, z: 0}
+        Rotation: {x: 0, y: 0, z: 0}
+      - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
+        Target: 0
+        TargetCount: 0
+        Time: 4
+        CastTime: 3
+        Location: {x: 0, y: 0, z: 0}
+        Rotation: {x: 0, y: 0, z: 0}
