@@ -50,6 +50,7 @@ public struct BossAction
     [Header("Positions")]
     public Vector3 Location;
     public Vector3 Rotation;
+    public Vector3 Scale;
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/BossTimeline", order = 1)]

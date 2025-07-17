@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7849989c626b60a419053c5b05537799, type: 3}
+  m_Name: RevEminent
+  m_EditorClassIdentifier: 
+  Mechanics:
+  - Name: Eminent
+    Time: 0
+    MechanicVariants:
+    - BossActions:
+      - Hitbox: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}
+        TargetBehaviour: 0
+        TargetCount: 0
+        Time: 0
+        CastTime: 6
+        Location: {x: 0, y: 0, z: 0}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 20, y: 0, z: 20}
+      - Hitbox: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}
+        TargetBehaviour: 0
+        TargetCount: 0
+        Time: 6
+        CastTime: 1
+        Location: {x: 0, y: 0, z: -14.78}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 15, y: 0, z: 15}
+      - Hitbox: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}
+        TargetBehaviour: 0
+        TargetCount: 0
+        Time: 6
+        CastTime: 1
+        Location: {x: -12.09, y: 0, z: 10.32}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 15, y: 0, z: 15}
+      - Hitbox: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}
+        TargetBehaviour: 0
+        TargetCount: 0
+        Time: 6
+        CastTime: 1
+        Location: {x: 11.91, y: 0, z: 10.32}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 15, y: 0, z: 15}
+      - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
+        TargetBehaviour: 0
+        TargetCount: 0
+        Time: 9
+        CastTime: 2
+        Location: {x: 0, y: 0, z: 0}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 14.79, y: 47.162685, z: 1}
+      - Hitbox: {fileID: 9036609322426120251, guid: ff637b32f0919fb4b8ab490ab9435005, type: 3}
+        TargetBehaviour: 0
+        TargetCount: 0
+        Time: 11
+        CastTime: 1
+        Location: {x: -3.02, y: 0, z: -9.6}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
+      - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
+        TargetBehaviour: 1
+        TargetCount: 0
+        Time: 11
+        CastTime: 1.5
+        Location: {x: 6.2, y: 0.77, z: 22.7}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 3.31, y: 47, z: 1}

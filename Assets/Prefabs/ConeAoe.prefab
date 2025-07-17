@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2991798992352613523}
   - component: {fileID: 9036609322426120251}
   m_Layer: 7
-  m_Name: LineAOE
+  m_Name: ConeAoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,13 +76,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3386289225603812544}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.67095673, y: -0.22319752, z: 0.22319752, w: 0.67095673}
   m_LocalPosition: {x: 0, y: 0.01, z: 0}
-  m_LocalScale: {x: 0, y: 47.162685, z: 1}
+  m_LocalScale: {x: 0, y: 47, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2991798992352613523}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -36.8, z: 0}
 --- !u!33 &7957043913005774662
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8536ad68c6d248a479e3773b8b859979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultTargetSize: {x: 10.993, y: 47.162685, z: 1}
+  _defaultTargetSize: {x: 47.68, y: 47.16269, z: 1}
   _duration: 0.25
 --- !u!1 &5707954139120211158
 GameObject:

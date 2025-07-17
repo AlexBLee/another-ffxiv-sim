@@ -9,6 +9,9 @@ public class Hitbox : MonoBehaviour
 
     private Player _player;
     private TargetBehaviour _targetBehaviour;
+
+    private BossAction _bossAction;
+
     private float _snapShotTime;
     private float _animateOutTime;
     private float _currentTime;
@@ -32,9 +35,17 @@ public class Hitbox : MonoBehaviour
         _snapShotTime = time;
     }
 
-    public void SetTargetBehaviour(TargetBehaviour targetBehaviour)
+    public void SetBossAction(BossAction bossAction)
     {
-        _targetBehaviour = targetBehaviour;
+        _bossAction = bossAction;
+        _targetBehaviour = _bossAction.TargetBehaviour;
+
+        SetSnapShotTime(bossAction.CastTime);
+
+        if (_hitboxAnimator != null)
+        {
+            _hitboxAnimator.SetTargetScaleAndPlay(bossAction.Scale);
+        }
     }
 
     void Update()

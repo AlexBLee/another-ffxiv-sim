@@ -71,7 +71,6 @@ public class BossTimelineRenderer : MonoBehaviour
     private void SpawnAction(BossAction action)
     {
         var hitbox = Instantiate(action.Hitbox, action.Location, Quaternion.Euler(action.Rotation));
-        hitbox.SetSnapShotTime(action.CastTime);
-        hitbox.SetTargetBehaviour(action.TargetBehaviour);
+        hitbox.SetBossAction(action);
     }
 }

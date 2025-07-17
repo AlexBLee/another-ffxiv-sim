@@ -1,25 +1,31 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HitboxAnimator : MonoBehaviour
 {
-    [SerializeField] private Vector3 _targetSize;
+    [SerializeField] private Vector3 _defaultTargetSize;
     [SerializeField] private float _duration;
 
     public float Duration => _duration;
 
     private Tweener _startTween;
     private Tweener _endTween;
+    private Vector3 _targetScale;
 
-    private void Start()
+    public void SetTargetScaleAndPlay(Vector3 targetScale)
     {
-        _startTween = transform.DOScaleX(_targetSize.x, _duration);
+        _targetScale = targetScale == Vector3.zero
+            ? _defaultTargetSize
+            : targetScale;
+
+        _startTween = transform.DOScale(new Vector3(_targetScale.x, transform.localScale.y, _targetScale.z), _duration);
     }
 
     public void AnimateOut()
     {
-        _endTween = transform.DOScaleX(0, _duration);
+        _endTween = transform.DOScale(new Vector3(0, transform.localScale.y, 0), _duration);
     }
 
     public void CleanupTweens()
