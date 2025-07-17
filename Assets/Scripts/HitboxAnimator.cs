@@ -9,18 +9,29 @@ public class HitboxAnimator : MonoBehaviour
 
     public float Duration => _duration;
 
+    private Tweener _startTween;
+    private Tweener _endTween;
+
     private void Start()
     {
-        transform.DOScaleX(_targetSize.x, _duration);
+        _startTween = transform.DOScaleX(_targetSize.x, _duration);
     }
 
     public void AnimateOut()
     {
-        transform.DOScaleX(0, _duration);
+        _endTween = transform.DOScaleX(0, _duration);
     }
 
-    private void OnDestroy()
+    public void CleanupTweens()
     {
-        DOTween.KillAll();
+        if (_startTween != null && _startTween.IsActive())
+        {
+            _startTween.Kill();
+        }
+
+        if (_endTween != null && _endTween.IsActive())
+        {
+            _endTween.Kill();
+        }
     }
 }

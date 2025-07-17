@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Target
+public enum TargetBehaviour
 {
     TargetsMap,
     TargetsPlayer,
+    FollowsPlayer,
 }
 
 public enum TargetCount
@@ -39,7 +40,7 @@ public struct BossMechanic
 public struct BossAction
 {
     public Hitbox Hitbox;
-    public Target Target;
+    public TargetBehaviour TargetBehaviour;
     public TargetCount TargetCount;
 
     [Header("Times")]

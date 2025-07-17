@@ -694,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045717fbab1f8b94ba542b4ac210e2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossTimeline: {fileID: 11400000, guid: 591eda514e5dc36438e5d11179071329, type: 2}
+  _bossTimeline: {fileID: 11400000, guid: 03e48da6e7aa1ae4fad5f6705f8c5731, type: 2}
 --- !u!4 &1371785919
 Transform:
   m_ObjectHideFlags: 0
@@ -774,7 +774,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: da6348c0037de964a9e37f8bd7d0f66e, type: 2}
+  - {fileID: 2100000, guid: ed8a32b0889c7de4191cce8200575f63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

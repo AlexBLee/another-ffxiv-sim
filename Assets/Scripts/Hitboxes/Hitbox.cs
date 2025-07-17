@@ -1,3 +1,5 @@
+using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class Hitbox : MonoBehaviour
@@ -5,7 +7,8 @@ public class Hitbox : MonoBehaviour
     [SerializeField] private PlayerHitboxDetector[] _playerHitboxDetector;
     [SerializeField] private HitboxAnimator _hitboxAnimator;
 
-    private GameObject _player;
+    private Player _player;
+    private TargetBehaviour _targetBehaviour;
     private float _snapShotTime;
     private float _animateOutTime;
     private float _currentTime;
@@ -13,6 +16,11 @@ public class Hitbox : MonoBehaviour
     private bool _executed;
 
     public float SnapShotTime => _snapShotTime;
+
+    private void Start()
+    {
+        _player = GameManager.Instance.Player;
+    }
 
     public void SetSnapShotTime(float time)
     {
@@ -24,9 +32,9 @@ public class Hitbox : MonoBehaviour
         _snapShotTime = time;
     }
 
-    public void SetPlayer(GameObject player)
+    public void SetTargetBehaviour(TargetBehaviour targetBehaviour)
     {
-        _player = player;
+        _targetBehaviour = targetBehaviour;
     }
 
     void Update()
@@ -36,10 +44,7 @@ public class Hitbox : MonoBehaviour
 
         _currentTime += Time.deltaTime;
 
-        if (_player != null)
-        {
-            transform.localPosition = new Vector3(_player.transform.localPosition.x, 0, _player.transform.localPosition.z);
-        }
+        DetermineBehaviour();
 
         if (_currentTime > _animateOutTime && _hitboxAnimator != null)
         {
@@ -53,9 +58,31 @@ public class Hitbox : MonoBehaviour
         }
     }
 
-    protected virtual void Execute()
+    private void DetermineBehaviour()
     {
+        if (_targetBehaviour == TargetBehaviour.FollowsPlayer && _player != null)
+        {
+            transform.localPosition = new Vector3(_player.transform.localPosition.x, 0, _player.transform.localPosition.z);
+            return;
+        }
+
+        if (_targetBehaviour == TargetBehaviour.TargetsPlayer)
+        {
+            transform.LookAt(_player.transform);
+        }
+    }
+
+    protected virtual async void Execute()
+    {
+        if (_hitboxAnimator != null)
+        {
+            _hitboxAnimator.CleanupTweens();
+        }
+
         CheckForHitboxHit();
+        gameObject.SetActive(false);
+
+        await UniTask.WaitForSeconds(1);
         Destroy(gameObject);
     }
 
