@@ -665,6 +665,68 @@ MonoBehaviour:
   _minZoom: 2
   _maxZoom: 10
   _pivotOffset: {x: 0, y: 1.5, z: 0}
+--- !u!1 &1103603179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103603181}
+  - component: {fileID: 1103603180}
+  m_Layer: 0
+  m_Name: WaymarkerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1103603180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103603179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277ff6a0946672c43bae8a5d71953ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wayMarkerJson: "{\r\n  \"Name\": \"C South P2\",\r\n  \"MapID\": 1026,\r\n  \"A\":
+    { \"X\": 100.0, \"Y\": 0.0, \"Z\": 89.199, \"ID\": 0, \"Active\": true },\r\n 
+    \"B\": { \"X\": 110.8, \"Y\": 0.0, \"Z\": 100.0, \"ID\": 1, \"Active\": true
+    },\r\n  \"C\": { \"X\": 100.0, \"Y\": -150.0, \"Z\": 118.0, \"ID\": 2, \"Active\":
+    true },\r\n  \"D\": { \"X\": 89.199, \"Y\": 0.0, \"Z\": 100.0, \"ID\": 3, \"Active\":
+    true },\r\n  \"One\": { \"X\": 92.5, \"Y\": 0.0, \"Z\": 92.5, \"ID\": 4, \"Active\":
+    true },\r\n  \"Two\": { \"X\": 107.5, \"Y\": 0.0, \"Z\": 92.5, \"ID\": 5, \"Active\":
+    true },\r\n  \"Three\": { \"X\": 107.5, \"Y\": 0.0, \"Z\": 107.5, \"ID\": 6,
+    \"Active\": true },\r\n  \"Four\": { \"X\": 92.5, \"Y\": 0.0, \"Z\": 107.5, \"ID\":
+    7, \"Active\": true }\r\n}"
+  _wayMarkerPrefab_A: {fileID: 860937219458754916, guid: 4aa26f02e0d2ec646bf8d3ba51023676, type: 3}
+  _wayMarkerPrefab_B: {fileID: 860937219458754916, guid: f24e3600f6477e14db9fad6baade72ff, type: 3}
+  _wayMarkerPrefab_C: {fileID: 860937219458754916, guid: 8faa353472fe2bf40905ea7cf3523262, type: 3}
+  _wayMarkerPrefab_D: {fileID: 860937219458754916, guid: b5a9299b3884cf646a920892a345b235, type: 3}
+  _wayMarkerPrefab_1: {fileID: 860937219458754916, guid: edd007d3924555f47856e3f6eeb01156, type: 3}
+  _wayMarkerPrefab_2: {fileID: 860937219458754916, guid: 4d50fa30a51cb1147b76ea3d1b48105d, type: 3}
+  _wayMarkerPrefab_3: {fileID: 860937219458754916, guid: 6a91b7aae6439eb4dba31c531e757bf6, type: 3}
+  _wayMarkerPrefab_4: {fileID: 860937219458754916, guid: 22e02673cd0966f41bdd9e2d1427e483, type: 3}
+--- !u!4 &1103603181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103603179}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.90925, y: 0, z: -8.15294}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1371785917
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045717fbab1f8b94ba542b4ac210e2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossTimeline: {fileID: 11400000, guid: ef8f959763673744ca6357224f28b239, type: 2}
+  _bossTimeline: {fileID: 11400000, guid: 03e48da6e7aa1ae4fad5f6705f8c5731, type: 2}
 --- !u!4 &1371785919
 Transform:
   m_ObjectHideFlags: 0
@@ -1079,3 +1141,4 @@ SceneRoots:
   - {fileID: 2081986619}
   - {fileID: 349589308}
   - {fileID: 1927753096}
+  - {fileID: 1103603181}
