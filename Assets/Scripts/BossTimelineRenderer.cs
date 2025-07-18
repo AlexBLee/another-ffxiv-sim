@@ -5,13 +5,13 @@ using Cysharp.Threading.Tasks;
 
 public class BossTimelineRenderer : MonoBehaviour
 {
+    [SerializeField] private BossTimeline _bossTimeline;
+
     private struct ScheduledAction
     {
         public BossAction Action;
         public float GlobalTime;
     }
-
-    [SerializeField] private BossTimeline _bossTimeline;
 
     private GameObject _player;
 
@@ -46,6 +46,11 @@ public class BossTimelineRenderer : MonoBehaviour
         if (_started)
             return;
 
+        if (_actionQueue.Count == 0)
+        {
+            InitializeTimeline();
+        }
+
         _started = true;
 
         RunTimeline().Forget();
@@ -66,6 +71,8 @@ public class BossTimelineRenderer : MonoBehaviour
             _actionQueue.Dequeue();
             SpawnAction(scheduled.Action);
         }
+
+        _started = false;
     }
 
     private void SpawnAction(BossAction action)
