@@ -24,7 +24,7 @@ MonoBehaviour:
         CastTime: 6
         Location: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
-        Scale: {x: 20, y: 0, z: 20}
+        Scale: {x: 20, y: 0.05, z: 20}
       - Hitbox: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
         CastTime: 1
         Location: {x: 0, y: 0, z: -14.78}
         Rotation: {x: 0, y: 0, z: 0}
-        Scale: {x: 15, y: 0, z: 15}
+        Scale: {x: 15, y: 0.05, z: 15}
       - Hitbox: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
         CastTime: 1
         Location: {x: -12.09, y: 0, z: 10.32}
         Rotation: {x: 0, y: 0, z: 0}
-        Scale: {x: 15, y: 0, z: 15}
+        Scale: {x: 15, y: 0.05, z: 15}
       - Hitbox: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
         CastTime: 1
         Location: {x: 11.91, y: 0, z: 10.32}
         Rotation: {x: 0, y: 0, z: 0}
-        Scale: {x: 15, y: 0, z: 15}
+        Scale: {x: 15, y: 0.05, z: 15}
       - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
         CastTime: 2
         Location: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
-        Scale: {x: 14.79, y: 47.162685, z: 1}
+        Scale: {x: 14.79, y: 47.16269, z: 1}
       - Hitbox: {fileID: 9036609322426120251, guid: ff637b32f0919fb4b8ab490ab9435005, type: 3}
         TargetBehaviour: 0
         TargetCount: 0

@@ -465,6 +465,8 @@ MonoBehaviour:
   - {fileID: 9016219720476182536}
   - {fileID: 7708419047655920023}
   - {fileID: 9210848169955428760}
+  _hitboxAnimator: {fileID: 0}
+  _defaultTargetScale: {x: 1.5, y: 6.2, z: 1}
   _offObjects: {fileID: 8313799725057003604}
   _onObjects: {fileID: 8418527435279966503}
 --- !u!1 &3386289225603812544

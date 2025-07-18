@@ -49,6 +49,7 @@ MonoBehaviour:
   _playerHitboxDetector:
   - {fileID: 5271366434393190241}
   _hitboxAnimator: {fileID: 2455335808562491050}
+  _defaultTargetScale: {x: 47.68, y: 47.16269, z: 1}
 --- !u!1 &3386289225603812544
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.67095673, y: -0.22319752, z: 0.22319752, w: 0.67095673}
   m_LocalPosition: {x: 0, y: 0.01, z: 0}
-  m_LocalScale: {x: 0, y: 47, z: 1}
+  m_LocalScale: {x: 47.68, y: 47, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2991798992352613523}
@@ -176,13 +177,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5707954139120211158}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.67095673, y: -0.22319752, z: 0.22319752, w: 0.67095673}
   m_LocalPosition: {x: 0, y: 0.01, z: 0}
-  m_LocalScale: {x: 10.993, y: 47.162685, z: 1}
+  m_LocalScale: {x: 47.68, y: 47.162685, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2991798992352613523}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -36.8, z: 0}
 --- !u!65 &5713093100086594428
 BoxCollider:
   m_ObjectHideFlags: 0

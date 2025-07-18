@@ -694,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045717fbab1f8b94ba542b4ac210e2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossTimeline: {fileID: 11400000, guid: 03e48da6e7aa1ae4fad5f6705f8c5731, type: 2}
+  _bossTimeline: {fileID: 11400000, guid: ef8f959763673744ca6357224f28b239, type: 2}
 --- !u!4 &1371785919
 Transform:
   m_ObjectHideFlags: 0

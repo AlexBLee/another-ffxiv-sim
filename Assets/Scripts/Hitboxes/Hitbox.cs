@@ -6,10 +6,10 @@ public class Hitbox : MonoBehaviour
 {
     [SerializeField] private PlayerHitboxDetector[] _playerHitboxDetector;
     [SerializeField] private HitboxAnimator _hitboxAnimator;
+    [SerializeField] private Vector3 _defaultTargetScale;
 
     private Player _player;
     private TargetBehaviour _targetBehaviour;
-
     private BossAction _bossAction;
 
     private float _snapShotTime;
@@ -42,9 +42,18 @@ public class Hitbox : MonoBehaviour
 
         SetSnapShotTime(bossAction.CastTime);
 
+        var targetScale = bossAction.Scale == Vector3.zero
+            ? _defaultTargetScale
+            : bossAction.Scale;
+
         if (_hitboxAnimator != null)
         {
-            _hitboxAnimator.SetTargetScaleAndPlay(bossAction.Scale);
+            _hitboxAnimator.SetTargetScaleAndPlay(targetScale);
+        }
+
+        foreach (var hitboxDetector in _playerHitboxDetector)
+        {
+            hitboxDetector.transform.localScale = targetScale;
         }
     }
 

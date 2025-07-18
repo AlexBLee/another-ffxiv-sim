@@ -131,4 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70a3cdc39939e547ba925449e82285c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerHitboxDetector: []
+  _hitboxAnimator: {fileID: 0}
+  _defaultTargetScale: {x: 5.68, y: -0.03, z: 5.68}
   HitboxPrefab: {fileID: 3464442068432214517, guid: fadc867865d6b8f469c01e8bb81a5a28, type: 3}

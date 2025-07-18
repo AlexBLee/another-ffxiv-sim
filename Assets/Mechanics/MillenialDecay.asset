@@ -24,6 +24,7 @@ MonoBehaviour:
         CastTime: 2
         Location: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 90, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
       - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -31,6 +32,7 @@ MonoBehaviour:
         CastTime: 2
         Location: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 15, y: 47.16269, z: 1}
       - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -38,6 +40,7 @@ MonoBehaviour:
         CastTime: 2
         Location: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 30, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
       - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -45,6 +48,7 @@ MonoBehaviour:
         CastTime: 2
         Location: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 60, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
       - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -52,3 +56,4 @@ MonoBehaviour:
         CastTime: 2
         Location: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 90, z: 0}
+        Scale: {x: 0, y: 0, z: 0}

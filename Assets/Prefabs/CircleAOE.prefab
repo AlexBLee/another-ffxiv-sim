@@ -150,6 +150,7 @@ MonoBehaviour:
   _playerHitboxDetector:
   - {fileID: 5957653568698825446}
   _hitboxAnimator: {fileID: 60290460907752869}
+  _defaultTargetScale: {x: 5.68, y: -0.03, z: 5.68}
 --- !u!1 &7922290933135492615
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.85
+  m_Radius: 0.5
   m_Height: 0.01
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}

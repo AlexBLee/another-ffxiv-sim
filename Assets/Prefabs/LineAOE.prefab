@@ -49,6 +49,7 @@ MonoBehaviour:
   _playerHitboxDetector:
   - {fileID: 5271366434393190241}
   _hitboxAnimator: {fileID: 2455335808562491050}
+  _defaultTargetScale: {x: 10.993, y: 47.16269, z: 1}
 --- !u!1 &3386289225603812544
 GameObject:
   m_ObjectHideFlags: 0

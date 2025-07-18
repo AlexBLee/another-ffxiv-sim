@@ -1,7 +1,5 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class HitboxAnimator : MonoBehaviour
 {
@@ -16,11 +14,7 @@ public class HitboxAnimator : MonoBehaviour
 
     public void SetTargetScaleAndPlay(Vector3 targetScale)
     {
-        _targetScale = targetScale == Vector3.zero
-            ? _defaultTargetSize
-            : targetScale;
-
-        _startTween = transform.DOScale(new Vector3(_targetScale.x, transform.localScale.y, _targetScale.z), _duration);
+        _startTween = transform.DOScale(new Vector3(targetScale.x, targetScale.y, targetScale.z), _duration);
     }
 
     public void AnimateOut()
