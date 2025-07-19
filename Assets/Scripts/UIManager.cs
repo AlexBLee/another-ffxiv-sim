@@ -29,10 +29,15 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (_maxTime > 0)
+        if (_maxTime > 0 && _currentTime < _maxTime)
         {
             _currentTime += Time.deltaTime;
             _progressBar.value = _currentTime / _maxTime;
+        }
+        else
+        {
+            _progressBar.gameObject.SetActive(false);
+            _maxTime = -1f;
         }
     }
 
@@ -40,13 +45,12 @@ public class UIManager : MonoBehaviour
     {
         if (string.IsNullOrEmpty(scheduledAction.Name))
         {
-            _progressBar.gameObject.SetActive(false);
-            _maxTime = -1f;
             return;
         }
 
         _progressBar.gameObject.SetActive(true);
-        _maxTime = scheduledAction.GlobalTime;
+        _currentTime = 0f;
+        _maxTime = scheduledAction.ActualTime;
         _mechName.text = scheduledAction.Name;
     }
 

@@ -12,6 +12,7 @@ public class BossTimelineRenderer : MonoBehaviour
         public string Name;
         public BossAction Action;
         public float GlobalTime;
+        public float ActualTime;
     }
 
     private Queue<ScheduledAction> _actionQueue = new();
@@ -24,6 +25,8 @@ public class BossTimelineRenderer : MonoBehaviour
 
     private void InitializeTimeline()
     {
+        float totalTime = 0;
+
         foreach (var mechanic in _bossTimeline.Mechanics)
         {
             var mechanicActionList = mechanic.GetRandomBossActionList();
@@ -31,16 +34,26 @@ public class BossTimelineRenderer : MonoBehaviour
             _actionQueue.Enqueue(new ScheduledAction()
             {
                 Name = mechanic.Name,
-                GlobalTime = mechanic.Time
+                GlobalTime = totalTime + mechanic.Time,
+                ActualTime = mechanic.Time
             });
+
+            totalTime += mechanic.Time;
+
+            Debug.Log("Mechanic Time: " + mechanic.Time + " - Total Time: " + totalTime);
 
             foreach (var action in mechanicActionList)
             {
                 _actionQueue.Enqueue(new ScheduledAction
                 {
                     Action = action,
-                    GlobalTime = mechanic.Time + action.Time
+                    GlobalTime = totalTime + action.Time,
+                    ActualTime = action.Time
                 });
+
+                totalTime += action.Time;
+
+                Debug.Log("Action Time: " + action.Time + " - Total Time: " + totalTime);
             }
         }
     }
