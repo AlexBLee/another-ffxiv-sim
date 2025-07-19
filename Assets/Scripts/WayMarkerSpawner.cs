@@ -1,72 +1,66 @@
-using System.IO;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 
 [System.Serializable]
-public class Waymarker
+public class WaymarkerData
 {
     public float X;
     public float Y;
     public float Z;
-    public int ID;
-    public bool Active;
-}
-
-// Would love for another way to parse it without making an object for every symbol,
-// but that's just how they decided to format the json.
-[System.Serializable]
-public class WaymarkerData
-{
-    public string Name;
-    public int MapID;
-    public Waymarker A;
-    public Waymarker B;
-    public Waymarker C;
-    public Waymarker D;
-    public Waymarker One;
-    public Waymarker Two;
-    public Waymarker Three;
-    public Waymarker Four;
 }
 
 public class WayMarkerSpawner : MonoBehaviour
 {
     [SerializeField, TextArea(1,20)] private string _wayMarkerJson;
+    [SerializeField] private Waymarker _waymarker;
 
-    [SerializeField] private GameObject _wayMarkerPrefab_A;
-    [SerializeField] private GameObject _wayMarkerPrefab_B;
-    [SerializeField] private GameObject _wayMarkerPrefab_C;
-    [SerializeField] private GameObject _wayMarkerPrefab_D;
+    private Dictionary<string, WaymarkerData> _waymarkers = new();
 
-    [SerializeField] private GameObject _wayMarkerPrefab_1;
-    [SerializeField] private GameObject _wayMarkerPrefab_2;
-    [SerializeField] private GameObject _wayMarkerPrefab_3;
-    [SerializeField] private GameObject _wayMarkerPrefab_4;
+    private readonly Dictionary<string, int> _nameToNumber = new()
+    {
+        { "One", 1 },
+        { "Two", 2 },
+        { "Three", 3 },
+        { "Four", 4 },
+    };
 
     private void Start()
     {
-        string json = _wayMarkerJson;
-
-        WaymarkerData waymarkerData = JsonUtility.FromJson<WaymarkerData>(json);
-
-        if (waymarkerData.A.Active) Spawn(_wayMarkerPrefab_A, waymarkerData.A);
-        if (waymarkerData.B.Active) Spawn(_wayMarkerPrefab_B, waymarkerData.B);
-        if (waymarkerData.C.Active) Spawn(_wayMarkerPrefab_C, waymarkerData.C);
-        if (waymarkerData.D.Active) Spawn(_wayMarkerPrefab_D, waymarkerData.D);
-
-        if (waymarkerData.One.Active) Spawn(_wayMarkerPrefab_1, waymarkerData.One);
-        if (waymarkerData.Two.Active) Spawn(_wayMarkerPrefab_2, waymarkerData.Two);
-        if (waymarkerData.Three.Active) Spawn(_wayMarkerPrefab_3, waymarkerData.Three);
-        if (waymarkerData.Four.Active) Spawn(_wayMarkerPrefab_4, waymarkerData.Four);
+        InitializeJsonData(_wayMarkerJson);
+        SpawnWaymarkers();
     }
 
-    private void Spawn(GameObject prefab, Waymarker waymarker)
+    private void InitializeJsonData(string json)
     {
-        var waymarkerObject = Instantiate(original: prefab,  parent: transform);
+        var root = JObject.Parse(json);
 
-        var xOffset = 100;
-        var zOffset = 110;
+        foreach (var prop in root.Properties())
+        {
+            if (prop.Name == "Name" || prop.Name == "MapID")
+                continue;
 
-        Vector3 waymarkerPosition = new Vector3(waymarker.X - xOffset, waymarker.Y, waymarker.Z - zOffset);
-        waymarkerObject.transform.localPosition = waymarkerPosition;
+            var dataName = prop.Name;
+
+            if (_nameToNumber.TryGetValue(prop.Name, out int number))
+                dataName = number.ToString();
+
+            WaymarkerData waymarker = prop.Value.ToObject<WaymarkerData>();
+            _waymarkers[dataName] = waymarker;
+        }
+    }
+
+    private void SpawnWaymarkers()
+    {
+        foreach (var waymarker in _waymarkers)
+        {
+            Spawn(waymarker.Key, waymarker.Value);
+        }
+    }
+
+    private void Spawn(string key, WaymarkerData waymarker)
+    {
+        var waymarkerObject = Instantiate(original: _waymarker,  parent: transform);
+        waymarkerObject.SetData(key, waymarker);
     }
 }
