@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 9090782243531040312}
-  _circleObject: {fileID: 6637453519695847896}
-  _squareObject: {fileID: 7608402060697709006}
+  _circleObject: {fileID: 1075781858184226329}
+  _squareObject: {fileID: 7790655877479177008}
 --- !u!1 &4601925135177771285
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.27, y: 1.46}
+  m_AnchoredPosition: {x: 0, y: 1.46}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &147370543312748335
@@ -377,7 +377,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fae8921d446c3304bb938517a2027fb4, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
