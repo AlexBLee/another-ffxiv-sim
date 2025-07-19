@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +11,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _mechName;
 
     [SerializeField] private Button _startButton;
-
 
     private float _currentTime = 0f;
     private float _maxTime = 0f;
