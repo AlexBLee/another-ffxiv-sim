@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Mechanics:
   - Name: Millenial Decay
-    Time: 0
+    Time: 3
     MechanicVariants:
     - BossActions:
       - Hitbox: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}

@@ -7,20 +7,18 @@ public class BossTimelineRenderer : MonoBehaviour
 {
     [SerializeField] private BossTimeline _bossTimeline;
 
-    private struct ScheduledAction
+    public struct ScheduledAction
     {
+        public string Name;
         public BossAction Action;
         public float GlobalTime;
     }
-
-    private GameObject _player;
 
     private Queue<ScheduledAction> _actionQueue = new();
     private bool _started = false;
 
     private void Start()
     {
-        _player = FindFirstObjectByType<Player>().gameObject;
         InitializeTimeline();
     }
 
@@ -29,6 +27,12 @@ public class BossTimelineRenderer : MonoBehaviour
         foreach (var mechanic in _bossTimeline.Mechanics)
         {
             var mechanicActionList = mechanic.GetRandomBossActionList();
+
+            _actionQueue.Enqueue(new ScheduledAction()
+            {
+                Name = mechanic.Name,
+                GlobalTime = mechanic.Time
+            });
 
             foreach (var action in mechanicActionList)
             {
@@ -69,6 +73,8 @@ public class BossTimelineRenderer : MonoBehaviour
             var scheduled = _actionQueue.Peek();
             float waitTime = scheduled.GlobalTime - (Time.time - startTime);
 
+            UIManager.Instance.ShowProgressBar(scheduled);
+
             if (waitTime > 0)
                 await UniTask.Delay(TimeSpan.FromSeconds(waitTime));
 
@@ -83,6 +89,11 @@ public class BossTimelineRenderer : MonoBehaviour
 
     private void SpawnAction(BossAction action)
     {
+        if (action.Hitbox == null)
+        {
+            return;
+        }
+
         var hitbox = Instantiate(action.Hitbox, action.Location, Quaternion.Euler(action.Rotation));
         hitbox.SetBossAction(action);
     }
