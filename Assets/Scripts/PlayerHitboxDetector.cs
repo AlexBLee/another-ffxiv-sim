@@ -12,7 +12,6 @@ public class PlayerHitboxDetector : MonoBehaviour
         if (other.gameObject == GameManager.Instance.Player.gameObject)
         {
             _playerInHitbox = true;
-            Debug.Log("In Hitbox");
         }
     }
 
@@ -21,8 +20,6 @@ public class PlayerHitboxDetector : MonoBehaviour
         if (other.gameObject == GameManager.Instance.Player.gameObject)
         {
             _playerInHitbox = false;
-            Debug.Log("Out Hitbox");
-
         }
     }
 }

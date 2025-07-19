@@ -46,6 +46,9 @@ public class BossTimelineRenderer : MonoBehaviour
         if (_started)
             return;
 
+        UIManager.Instance.HideHitText();
+        UIManager.Instance.SetStartButtonInteractiveState(false);
+
         if (_actionQueue.Count == 0)
         {
             InitializeTimeline();
@@ -59,6 +62,7 @@ public class BossTimelineRenderer : MonoBehaviour
     private async UniTaskVoid RunTimeline()
     {
         var startTime = Time.time;
+        ScheduledAction lastScheduledAction = new();
 
         while (_actionQueue.Count > 0)
         {
@@ -68,10 +72,12 @@ public class BossTimelineRenderer : MonoBehaviour
             if (waitTime > 0)
                 await UniTask.Delay(TimeSpan.FromSeconds(waitTime));
 
-            _actionQueue.Dequeue();
+            lastScheduledAction = _actionQueue.Dequeue();
             SpawnAction(scheduled.Action);
         }
 
+        await UniTask.WaitForSeconds(lastScheduledAction.Action.CastTime);
+        UIManager.Instance.SetStartButtonInteractiveState(true);
         _started = false;
     }
 
