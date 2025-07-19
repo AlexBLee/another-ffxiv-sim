@@ -112,7 +112,7 @@ public class Hitbox : MonoBehaviour
         {
             if (hitboxDetector.PlayerInHitbox)
             {
-                Debug.Log("Hit!");
+                UIManager.Instance.ShowHitText();
             }
         }
     }
