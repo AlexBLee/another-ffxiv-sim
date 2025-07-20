@@ -24,7 +24,7 @@ public class MechanicVariantList
 }
 
 [System.Serializable]
-public struct BossMechanic
+public class BossMechanic
 {
     public string Name;
     public float Time;
@@ -56,5 +56,13 @@ public struct BossAction
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/BossTimeline", order = 1)]
 public class BossTimeline : ScriptableObject
 {
-    public List<BossMechanic> Mechanics;
+    public List<BossMechanic> Mechanics = new();
+
+    public BossMechanic AddNewMechanic()
+    {
+        var mechanic = new BossMechanic();
+        Mechanics.Add(mechanic);
+
+        return mechanic;
+    }
 }

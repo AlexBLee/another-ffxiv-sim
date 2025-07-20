@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 public class BossTimelineRenderer : MonoBehaviour
 {
     [SerializeField] private BossTimeline _bossTimeline;
+    public BossTimeline BossTimeline => _bossTimeline;
 
     public struct ScheduledAction
     {
@@ -112,9 +113,8 @@ public class BossTimelineRenderer : MonoBehaviour
         hitbox.SetBossAction(action);
     }
 
-    public void CreateNewBossTimeline()
+    public void SetBossTimeline(BossTimeline bossTimeline)
     {
-        BossTimeline bossTimeline = ScriptableObject.CreateInstance<BossTimeline>();
         _bossTimeline = bossTimeline;
     }
 }

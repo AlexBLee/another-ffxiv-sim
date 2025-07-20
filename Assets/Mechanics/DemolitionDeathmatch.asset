@@ -24,6 +24,7 @@ MonoBehaviour:
         CastTime: 3
         Location: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
+            Scale: {x: 0, y: 0, z: 0}
       - Hitbox: {fileID: 8195197983083972066, guid: 08efaf1a3e647d2418869f7e489fc5bf, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -31,6 +32,7 @@ MonoBehaviour:
         CastTime: 3
         Location: {x: -12, y: 0, z: -12}
         Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
       - Hitbox: {fileID: 8195197983083972066, guid: 08efaf1a3e647d2418869f7e489fc5bf, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -38,6 +40,7 @@ MonoBehaviour:
         CastTime: 3
         Location: {x: 12, y: 0, z: -12}
         Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
       - Hitbox: {fileID: 8195197983083972066, guid: 08efaf1a3e647d2418869f7e489fc5bf, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -45,6 +48,7 @@ MonoBehaviour:
         CastTime: 3
         Location: {x: -12, y: 0, z: 12}
         Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
     - BossActions:
       - Hitbox: {fileID: 8195197983083972066, guid: 08efaf1a3e647d2418869f7e489fc5bf, type: 3}
         TargetBehaviour: 0
@@ -53,6 +57,7 @@ MonoBehaviour:
         CastTime: 3
         Location: {x: 12, y: 0, z: 12}
         Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
       - Hitbox: {fileID: 8195197983083972066, guid: 08efaf1a3e647d2418869f7e489fc5bf, type: 3}
         TargetBehaviour: 2
         TargetCount: 0
@@ -60,6 +65,7 @@ MonoBehaviour:
         CastTime: 3
         Location: {x: 0, y: 0, z: 0}
         Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
       - Hitbox: {fileID: 8195197983083972066, guid: 08efaf1a3e647d2418869f7e489fc5bf, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -67,6 +73,7 @@ MonoBehaviour:
         CastTime: 3
         Location: {x: 12, y: 0, z: -12}
         Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
       - Hitbox: {fileID: 8195197983083972066, guid: 08efaf1a3e647d2418869f7e489fc5bf, type: 3}
         TargetBehaviour: 0
         TargetCount: 0
@@ -74,3 +81,4 @@ MonoBehaviour:
         CastTime: 3
         Location: {x: -12, y: 0, z: 12}
         Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 0, y: 0, z: 0}
