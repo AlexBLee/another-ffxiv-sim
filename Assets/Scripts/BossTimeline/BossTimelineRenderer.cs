@@ -40,8 +40,6 @@ public class BossTimelineRenderer : MonoBehaviour
 
             totalTime += mechanic.Time;
 
-            Debug.Log("Mechanic Time: " + mechanic.Time + " - Total Time: " + totalTime);
-
             foreach (var action in mechanicActionList)
             {
                 _actionQueue.Enqueue(new ScheduledAction
@@ -52,8 +50,6 @@ public class BossTimelineRenderer : MonoBehaviour
                 });
 
                 totalTime += action.Time;
-
-                Debug.Log("Action Time: " + action.Time + " - Total Time: " + totalTime);
             }
         }
     }
@@ -63,8 +59,8 @@ public class BossTimelineRenderer : MonoBehaviour
         if (_started)
             return;
 
-        UIManager.Instance.HideHitText();
-        UIManager.Instance.SetStartButtonInteractiveState(false);
+        UIManager.Instance.GameplayUI.HideHitText();
+        UIManager.Instance.GameplayUI.SetStartButtonInteractiveState(false);
 
         if (_actionQueue.Count == 0)
         {
@@ -86,7 +82,7 @@ public class BossTimelineRenderer : MonoBehaviour
             var scheduled = _actionQueue.Peek();
             float waitTime = scheduled.GlobalTime - (Time.time - startTime);
 
-            UIManager.Instance.ShowProgressBar(scheduled);
+            UIManager.Instance.GameplayUI.ShowProgressBar(scheduled);
 
             if (waitTime > 0)
                 await UniTask.Delay(TimeSpan.FromSeconds(waitTime));
@@ -96,7 +92,7 @@ public class BossTimelineRenderer : MonoBehaviour
         }
 
         await UniTask.WaitForSeconds(lastScheduledAction.Action.CastTime);
-        UIManager.Instance.SetStartButtonInteractiveState(true);
+        UIManager.Instance.GameplayUI.SetStartButtonInteractiveState(true);
         _started = false;
     }
 

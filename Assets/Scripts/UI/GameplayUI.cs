@@ -2,30 +2,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class GameplayUI : MonoBehaviour
 {
-    public static UIManager Instance { get; private set; }
-
     [SerializeField] private TextMeshProUGUI _hitText;
     [SerializeField] private Slider _progressBar;
     [SerializeField] private TextMeshProUGUI _mechName;
-
     [SerializeField] private Button _startButton;
 
     private float _currentTime = 0f;
     private float _maxTime = 0f;
-
-    void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Update()
     {
