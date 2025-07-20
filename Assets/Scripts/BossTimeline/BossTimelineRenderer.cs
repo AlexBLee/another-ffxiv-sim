@@ -25,6 +25,11 @@ public class BossTimelineRenderer : MonoBehaviour
 
     private void InitializeTimeline()
     {
+        if (_bossTimeline == null)
+        {
+            return;
+        }
+
         float totalTime = 0;
 
         foreach (var mechanic in _bossTimeline.Mechanics)
@@ -56,7 +61,7 @@ public class BossTimelineRenderer : MonoBehaviour
 
     public void StartTimer()
     {
-        if (_started)
+        if (_started || _bossTimeline == null)
             return;
 
         UIManager.Instance.GameplayUI.HideHitText();
@@ -105,5 +110,11 @@ public class BossTimelineRenderer : MonoBehaviour
 
         var hitbox = Instantiate(action.Hitbox, action.Location, Quaternion.Euler(action.Rotation));
         hitbox.SetBossAction(action);
+    }
+
+    public void CreateNewBossTimeline()
+    {
+        BossTimeline bossTimeline = ScriptableObject.CreateInstance<BossTimeline>();
+        _bossTimeline = bossTimeline;
     }
 }

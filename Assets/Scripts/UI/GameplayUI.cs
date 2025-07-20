@@ -8,6 +8,7 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private Slider _progressBar;
     [SerializeField] private TextMeshProUGUI _mechName;
     [SerializeField] private Button _startButton;
+    [SerializeField] private Button _editorButton;
 
     private float _currentTime = 0f;
     private float _maxTime = 0f;
