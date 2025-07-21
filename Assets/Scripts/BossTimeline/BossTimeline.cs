@@ -22,9 +22,12 @@ public class MechanicVariantList
 {
     public List<BossAction> BossActions = new List<BossAction>();
 
-    public void AddBossAction()
+    public BossAction AddBossAction()
     {
-        BossActions.Add(new BossAction());
+        var bossAction = new BossAction();
+        BossActions.Add(bossAction);
+
+        return bossAction;
     }
 }
 
@@ -48,7 +51,7 @@ public class BossMechanic
 }
 
 [System.Serializable]
-public struct BossAction
+public class BossAction
 {
     public Hitbox Hitbox;
     public TargetBehaviour TargetBehaviour;

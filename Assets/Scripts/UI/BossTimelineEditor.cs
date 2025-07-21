@@ -10,8 +10,8 @@ public class BossTimelineEditor : MonoBehaviour
     [SerializeField] private ToggleGroup _toggleGroup;
 
     [SerializeField] private MechanicDrawer _mechanicDrawer;
-    [SerializeField] private Drawer _variantContainer;
-    [SerializeField] private Drawer _actionContainer;
+    [SerializeField] private VariantDrawer _variantContainer;
+    [SerializeField] private ActionDrawer _actionContainer;
 
     private BossTimeline _bossTimeline;
 
@@ -32,13 +32,12 @@ public class BossTimelineEditor : MonoBehaviour
     public void AddMechanicDrawer()
     {
         var drawer = Instantiate(_mechanicDrawer, _scrollViewContainer.transform);
+        _currentBossMechanic = _bossTimeline.AddNewMechanic();
 
         drawer.SetBossMechanic(_currentBossMechanic);
         drawer.SetToggleGroup(_toggleGroup);
 
         _bossMechanics.Add(_currentBossMechanic);
-
-        _currentBossMechanic = _bossTimeline.AddNewMechanic();
     }
 
     public void AddVariantDrawer()
@@ -54,10 +53,6 @@ public class BossTimelineEditor : MonoBehaviour
         var actionDrawer = Instantiate(_actionContainer, _scrollViewContainer.transform);
         actionDrawer.SetToggleGroup(_toggleGroup);
 
-        _currentBossMechanic.MechanicVariants[0].AddBossAction();
-    }
-
-    private void OnToggleSelected(bool obj)
-    {
+        actionDrawer.SetBossAction(_currentBossMechanic.MechanicVariants[0].AddBossAction());
     }
 }
