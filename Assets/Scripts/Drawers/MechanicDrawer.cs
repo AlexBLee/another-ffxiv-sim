@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class MechanicDrawer : MonoBehaviour
+public class MechanicDrawer : Drawer
 {
     [SerializeField] private TMP_InputField _nameInputField;
     [SerializeField] private TMP_InputField _timeInputField;
@@ -30,6 +30,11 @@ public class MechanicDrawer : MonoBehaviour
 
     private void OnNameInputFieldEndEdit(string text)
     {
+        if (string.IsNullOrEmpty(text))
+        {
+            return;
+        }
+
         _nameInputField.gameObject.SetActive(false);
         _nameText.text = text;
         _bossMechanic.Name = text;
@@ -37,6 +42,11 @@ public class MechanicDrawer : MonoBehaviour
 
     private void OnTimeInputFieldEndEdit(string text)
     {
+        if (string.IsNullOrEmpty(text))
+        {
+            return;
+        }
+
         var isNumber = float.TryParse(text, out float time);
 
         if (isNumber)

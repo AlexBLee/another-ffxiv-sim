@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossTimelineEditor : MonoBehaviour
 {
     [SerializeField] private BossTimelineRenderer _bossTimelineRenderer;
     [SerializeField] private GameObject _scrollViewContainer;
+    [SerializeField] private ToggleGroup _toggleGroup;
+
     [SerializeField] private MechanicDrawer _mechanicDrawer;
-    [SerializeField] private GameObject _variantContainer;
-    [SerializeField] private GameObject _actionContainer;
+    [SerializeField] private Drawer _variantContainer;
+    [SerializeField] private Drawer _actionContainer;
 
     private BossTimeline _bossTimeline;
 
@@ -30,21 +33,31 @@ public class BossTimelineEditor : MonoBehaviour
     {
         var drawer = Instantiate(_mechanicDrawer, _scrollViewContainer.transform);
 
-        _currentBossMechanic = _bossTimeline.AddNewMechanic();
         drawer.SetBossMechanic(_currentBossMechanic);
+        drawer.SetToggleGroup(_toggleGroup);
 
         _bossMechanics.Add(_currentBossMechanic);
+
+        _currentBossMechanic = _bossTimeline.AddNewMechanic();
     }
 
     public void AddVariantDrawer()
     {
         var variantDrawer = Instantiate(_variantContainer, _scrollViewContainer.transform);
+        variantDrawer.SetToggleGroup(_toggleGroup);
+
         _currentBossMechanic.AddMechanicVariant();
     }
 
     public void AddActionDrawer()
     {
         var actionDrawer = Instantiate(_actionContainer, _scrollViewContainer.transform);
+        actionDrawer.SetToggleGroup(_toggleGroup);
+
         _currentBossMechanic.MechanicVariants[0].AddBossAction();
+    }
+
+    private void OnToggleSelected(bool obj)
+    {
     }
 }
