@@ -28,6 +28,10 @@ public class EditorUI : MonoBehaviour
                 _newActionButton.gameObject.SetActive(true);
                 break;
 
+            case ActionDrawer:
+                // Do nothing..
+                break;
+
             default:
                 Debug.LogWarning("Unknown Drawer");
                 break;
