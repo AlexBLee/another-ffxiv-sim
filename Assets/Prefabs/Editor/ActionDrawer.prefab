@@ -358,9 +358,9 @@ MonoBehaviour:
   _hitboxCache:
     _serializedList:
     - Key: 0
-      Value: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}
-    - Key: 1
       Value: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
+    - Key: 1
+      Value: {fileID: 9036609322426120251, guid: 70200cf77d2b1094c8bc0da2bbb5a2c8, type: 3}
 --- !u!114 &8515799704085330126
 MonoBehaviour:
   m_ObjectHideFlags: 0

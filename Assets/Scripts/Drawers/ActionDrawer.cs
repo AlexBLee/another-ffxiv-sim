@@ -8,8 +8,8 @@ public class ActionDrawer : Drawer
 {
     private enum HitboxType
     {
-        Circle,
         Line,
+        Circle,
     }
 
     [SerializeField] private TMP_Dropdown _hitboxDropdown;
@@ -57,6 +57,9 @@ public class ActionDrawer : Drawer
     public void SetBossAction(BossAction bossAction)
     {
         _bossAction = bossAction;
+
+        // Setting one by default - in case the user never changes the option.
+        _bossAction.Hitbox = _hitboxCache[HitboxType.Line];
     }
 
     private void InitializeDropdown(TMP_Dropdown dropdown, Type enumType)
@@ -73,7 +76,7 @@ public class ActionDrawer : Drawer
             return;
         }
 
-
+        _bossAction.Hitbox = _hitboxCache[(HitboxType)shapeIndex];
     }
 
     private void OnTargetBehaviourDropdownValueChanged(int targetBehaviourIndex)
