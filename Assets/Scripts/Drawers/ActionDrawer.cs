@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using AYellowpaper.SerializedCollections;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class ActionDrawer : Drawer
     private enum HitboxType
     {
         Circle,
-        Square,
+        Line,
     }
 
     [SerializeField] private TMP_Dropdown _hitboxDropdown;
@@ -19,6 +20,8 @@ public class ActionDrawer : Drawer
     [SerializeField] private Vector3InputField _locationInputField;
     [SerializeField] private Vector3InputField _rotationInputField;
     [SerializeField] private Vector3InputField _scaleInputField;
+
+    [SerializeField] private SerializedDictionary<HitboxType, Hitbox> _hitboxCache;
 
     private BossAction _bossAction;
 
