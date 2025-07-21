@@ -21,6 +21,11 @@ public enum TargetCount
 public class MechanicVariantList
 {
     public List<BossAction> BossActions = new List<BossAction>();
+
+    public void AddBossAction()
+    {
+        BossActions.Add(new BossAction());
+    }
 }
 
 [System.Serializable]
@@ -29,6 +34,12 @@ public class BossMechanic
     public string Name;
     public float Time;
     public List<MechanicVariantList> MechanicVariants;
+
+    public void AddMechanicVariant()
+    {
+        MechanicVariants ??= new List<MechanicVariantList>();
+        MechanicVariants.Add(new MechanicVariantList());
+    }
 
     public List<BossAction> GetRandomBossActionList()
     {
