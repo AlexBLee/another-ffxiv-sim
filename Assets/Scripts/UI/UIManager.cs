@@ -9,8 +9,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameplayUI _gameplayUI;
     [SerializeField] private EditorUI _editorUI;
 
+    public bool _inEditorMode;
+
     public GameplayUI GameplayUI => _gameplayUI;
     public EditorUI EditorUI => _editorUI;
+
+    public bool InEditorMode => _inEditorMode;
 
     void Awake()
     {
@@ -34,5 +38,6 @@ public class UIManager : MonoBehaviour
     {
         _editorUI.gameObject.SetActive(true);
         _gameplayUI.gameObject.SetActive(false);
+        _inEditorMode = true;
     }
 }

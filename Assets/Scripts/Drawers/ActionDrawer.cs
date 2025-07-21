@@ -24,6 +24,7 @@ public class ActionDrawer : Drawer
     [SerializeField] private SerializedDictionary<HitboxType, Hitbox> _hitboxCache;
 
     private BossAction _bossAction;
+    private Hitbox _currentHitbox;
 
     private void OnEnable()
     {
@@ -60,6 +61,8 @@ public class ActionDrawer : Drawer
 
         // Setting one by default - in case the user never changes the option.
         _bossAction.Hitbox = _hitboxCache[HitboxType.Line];
+
+        _currentHitbox = Instantiate(_hitboxCache[HitboxType.Line]);
     }
 
     private void InitializeDropdown(TMP_Dropdown dropdown, Type enumType)
@@ -77,6 +80,10 @@ public class ActionDrawer : Drawer
         }
 
         _bossAction.Hitbox = _hitboxCache[(HitboxType)shapeIndex];
+
+        var nextHitbox = Instantiate(_hitboxCache[(HitboxType)shapeIndex]);
+        Destroy(_currentHitbox.gameObject);
+        _currentHitbox = nextHitbox;
     }
 
     private void OnTargetBehaviourDropdownValueChanged(int targetBehaviourIndex)

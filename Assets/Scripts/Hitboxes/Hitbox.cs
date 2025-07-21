@@ -23,6 +23,12 @@ public class Hitbox : MonoBehaviour
     private void Start()
     {
         _player = GameManager.Instance.Player;
+
+        if (UIManager.Instance.InEditorMode)
+        {
+            gameObject.SetActive(true);
+            _hitboxAnimator.transform.localScale = _defaultTargetScale;
+        }
     }
 
     public void SetSnapShotTime(float time)
@@ -59,7 +65,7 @@ public class Hitbox : MonoBehaviour
 
     void Update()
     {
-        if (_executed)
+        if (_executed || UIManager.Instance.InEditorMode)
             return;
 
         _currentTime += Time.deltaTime;
