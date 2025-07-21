@@ -45,6 +45,6 @@ public class BossTimelineEditor : MonoBehaviour
     public void AddActionDrawer()
     {
         var actionDrawer = Instantiate(_actionContainer, _scrollViewContainer.transform);
-
+        _currentBossMechanic.MechanicVariants[0].AddBossAction();
     }
 }
