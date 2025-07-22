@@ -146,13 +146,13 @@ public class BossTimelineEditor : MonoBehaviour
         _currentDrawer = null;
     }
 
-    public void ResetActionDrawers()
+    public void ResetActionDrawerHandles()
     {
         foreach (var drawer in _drawers)
         {
             if (drawer is ActionDrawer actionDrawer)
             {
-                actionDrawer.ResetAll();
+                actionDrawer.ResetHandles();
             }
         }
     }

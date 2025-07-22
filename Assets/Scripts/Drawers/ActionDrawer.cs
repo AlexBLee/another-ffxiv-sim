@@ -97,7 +97,7 @@ public class ActionDrawer : Drawer
 
         if (!wasLoaded)
         {
-            TransformHandleManager.Instance.DestroyAllHandles();
+            UIManager.Instance.EditorUI.BossTimelineEditor.ResetActionDrawerHandles();
 
             _currentHitbox = Instantiate(_hitboxCache[HitboxType.Line]);
             _currentHandle = TransformHandleManager.Instance.CreateHandle(_currentHitbox.transform);
@@ -210,11 +210,17 @@ public class ActionDrawer : Drawer
         _currentHitbox.transform.localScale = vector;
     }
 
-    public void ResetAll()
+    public void ResetHandles()
     {
-        _currentHandle.OnInteractionEvent -= OnHandleInteraction;
-        TransformHandleManager.Instance.RemoveHandle(_currentHandle);
+        if (_currentHandle == null)
+        {
+            return;
+        }
 
-        Destroy(_currentHitbox.gameObject);
+        _currentHandle.OnInteractionEvent -= OnHandleInteraction;
+        Destroy(_currentHandle.gameObject);
+
+        _currentHandle = null;
     }
 }
+

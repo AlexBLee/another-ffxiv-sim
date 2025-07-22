@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
         _gameplayUI.gameObject.SetActive(true);
         _editorUI.gameObject.SetActive(false);
 
-        _editorUI.BossTimelineEditor.ResetActionDrawers();
+        _editorUI.BossTimelineEditor.ResetActionDrawerHandles();
         _inEditorMode = false;
     }
 
