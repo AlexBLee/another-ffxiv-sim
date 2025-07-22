@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,12 +24,16 @@ public class UIManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        _inEditorMode = true;
     }
 
     public void ShowGameplayUI()
     {
         _gameplayUI.gameObject.SetActive(true);
         _editorUI.gameObject.SetActive(false);
+
+        _editorUI.BossTimelineEditor.ResetActionDrawers();
+        _inEditorMode = false;
     }
 
     public void ShowEditorUI()

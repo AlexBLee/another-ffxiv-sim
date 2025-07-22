@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using AYellowpaper.SerializedCollections;
 using TMPro;
@@ -78,17 +79,35 @@ public class ActionDrawer : Drawer
         }
     }
 
-    public void SetBossAction(BossAction bossAction)
+    public void SetBossAction(BossAction bossAction, bool wasLoaded)
     {
         _bossAction = bossAction;
 
+        _targetDropdown.value = (int)bossAction.TargetBehaviour;
+        _timeInputField.text = bossAction.Time.ToString(CultureInfo.InvariantCulture);
+        _castTimeInputField.text = bossAction.CastTime.ToString(CultureInfo.InvariantCulture);
+        _locationInputField.SetValue(bossAction.Location);
+        _rotationInputField.SetValue(bossAction.Rotation);
+        _scaleInputField.SetValue(bossAction.Scale == Vector3.zero ? Vector3.one : bossAction.Scale);
+
         // Setting one by default - in case the user never changes the option.
-        _bossAction.Hitbox = _hitboxCache[HitboxType.Line];
+        _bossAction.Hitbox = wasLoaded
+            ? bossAction.Hitbox
+            : _hitboxCache[HitboxType.Line];
 
-        _currentHitbox = Instantiate(_hitboxCache[HitboxType.Line]);
-        _currentHandle = TransformHandleManager.Instance.CreateHandle(_currentHitbox.transform);
+        if (!wasLoaded)
+        {
+            TransformHandleManager.Instance.DestroyAllHandles();
 
-        _currentHandle.OnInteractionEvent += OnHandleInteraction;
+            _currentHitbox = Instantiate(_hitboxCache[HitboxType.Line]);
+            _currentHandle = TransformHandleManager.Instance.CreateHandle(_currentHitbox.transform);
+
+            _currentHitbox.transform.localPosition = bossAction.Location;
+            _currentHitbox.transform.localRotation = Quaternion.Euler(bossAction.Rotation);
+            _currentHitbox.transform.localScale = bossAction.Scale == Vector3.zero ? Vector3.one : bossAction.Scale;
+
+            _currentHandle.OnInteractionEvent += OnHandleInteraction;
+        }
     }
 
     private void InitializeDropdown(TMP_Dropdown dropdown, Type enumType)
@@ -107,8 +126,8 @@ public class ActionDrawer : Drawer
 
         _bossAction.Hitbox = _hitboxCache[(HitboxType)shapeIndex];
 
-        TransformHandleManager.Instance.RemoveHandle(_currentHandle);
         _currentHandle.OnInteractionEvent -= OnHandleInteraction;
+        TransformHandleManager.Instance.RemoveHandle(_currentHandle);
 
         Destroy(_currentHitbox.gameObject);
 
@@ -189,5 +208,13 @@ public class ActionDrawer : Drawer
 
         _bossAction.Scale = vector;
         _currentHitbox.transform.localScale = vector;
+    }
+
+    public void ResetAll()
+    {
+        _currentHandle.OnInteractionEvent -= OnHandleInteraction;
+        TransformHandleManager.Instance.RemoveHandle(_currentHandle);
+
+        Destroy(_currentHitbox.gameObject);
     }
 }

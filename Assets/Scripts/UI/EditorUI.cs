@@ -1,6 +1,6 @@
-using System.IO;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class EditorUI : MonoBehaviour
@@ -14,7 +14,33 @@ public class EditorUI : MonoBehaviour
 
     [SerializeField] private TMP_InputField _saveNameInputField;
 
+    private UnityAction _newMechanicAction;
+    private UnityAction _newVariantAction;
+    private UnityAction _newAction;
+
     public BossTimelineEditor BossTimelineEditor => _bossTimelineEditor;
+
+    private void OnEnable()
+    {
+        _newMechanicAction = () => _bossTimelineEditor.AddMechanicDrawer();
+        _newVariantAction = () => _bossTimelineEditor.AddVariantDrawer();
+        _newAction = () => _bossTimelineEditor.AddActionDrawer();
+
+        _newMechanicButton.onClick.AddListener(_newMechanicAction);
+        _newVariantButton.onClick.AddListener(_newVariantAction);
+        _newActionButton.onClick.AddListener(_newAction);
+    }
+
+    private void OnDisable()
+    {
+        _newMechanicButton.onClick.RemoveListener(_newMechanicAction);
+        _newVariantButton.onClick.RemoveListener(_newVariantAction);
+        _newActionButton.onClick.RemoveListener(_newAction);
+
+        _newMechanicAction = null;
+        _newVariantAction = null;
+        _newAction = null;
+    }
 
     public void CreateNewBossTimeline()
     {

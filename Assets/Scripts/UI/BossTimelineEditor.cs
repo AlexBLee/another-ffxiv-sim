@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,12 +31,30 @@ public class BossTimelineEditor : MonoBehaviour
     {
         _bossTimeline = ScriptableObject.CreateInstance<BossTimeline>();
         _bossTimelineRenderer.SetBossTimeline(_bossTimeline);
+        ResetDrawers();
     }
 
     public void LoadBossTimeline(BossTimeline bossTimeline)
     {
         _bossTimeline = bossTimeline;
         _bossTimelineRenderer.SetBossTimeline(_bossTimeline);
+
+        ResetDrawers();
+
+        foreach (var mechanic in _bossTimeline.Mechanics)
+        {
+            AddMechanicDrawer(mechanic);
+
+            foreach (var mechanicVariantList in mechanic.MechanicVariants)
+            {
+                AddVariantDrawer(mechanicVariantList);
+
+                foreach (var action in mechanicVariantList.BossActions)
+                {
+                    AddActionDrawer(action);
+                }
+            }
+        }
     }
 
     public void SetCurrentSelectedDrawer(Drawer drawer)
@@ -45,21 +62,22 @@ public class BossTimelineEditor : MonoBehaviour
         _currentDrawer = drawer;
     }
 
-    public void AddMechanicDrawer()
+    public void AddMechanicDrawer(BossMechanic mechanic = null)
     {
         var drawer = Instantiate(_mechanicDrawer, _scrollViewContainer.transform);
-        _currentBossMechanic = _bossTimeline.AddNewMechanic();
+        _currentBossMechanic = mechanic ?? _bossTimeline.AddNewMechanic();
 
         drawer.SetBossMechanic(_currentBossMechanic);
         drawer.SetToggleGroup(_toggleGroup);
 
         _drawers.Add(drawer);
         _bossMechanics.Add(_currentBossMechanic);
+        _currentDrawer = drawer;
     }
 
-    public void AddVariantDrawer()
+    public void AddVariantDrawer(MechanicVariantList variantList = null)
     {
-        if (_currentDrawer is not MechanicDrawer)
+        if (_currentDrawer is not MechanicDrawer && variantList == null)
         {
             return;
         }
@@ -68,13 +86,15 @@ public class BossTimelineEditor : MonoBehaviour
         variantDrawer.SetToggleGroup(_toggleGroup);
 
         var insertIndex = GetNextDrawerSpot(_currentDrawer, typeof(VariantDrawer));
-
         _drawers.Insert(insertIndex, variantDrawer);
         variantDrawer.transform.SetSiblingIndex(insertIndex);
-        variantDrawer.SetMechanicVariantList(_currentBossMechanic.AddMechanicVariant());
+
+        MechanicVariantList mechanicVariantList = variantList ?? _currentBossMechanic.AddMechanicVariant();
+        variantDrawer.SetMechanicVariantList(mechanicVariantList);
+        _currentDrawer = variantDrawer;
     }
 
-    public void AddActionDrawer()
+    public void AddActionDrawer(BossAction existingBossAction = null)
     {
         if (_currentDrawer is not VariantDrawer drawer)
         {
@@ -88,7 +108,9 @@ public class BossTimelineEditor : MonoBehaviour
 
         _drawers.Insert(insertIndex, actionDrawer);
         actionDrawer.transform.SetSiblingIndex(insertIndex);
-        actionDrawer.SetBossAction(drawer.MechanicVariantList.AddBossAction());
+
+        BossAction bossAction = existingBossAction ?? drawer.MechanicVariantList.AddBossAction();
+        actionDrawer.SetBossAction(bossAction, existingBossAction != null);
     }
 
     private int GetNextDrawerSpot(Drawer drawer, Type type)
@@ -111,5 +133,27 @@ public class BossTimelineEditor : MonoBehaviour
         }
 
         return insertIndex;
+    }
+
+    private void ResetDrawers()
+    {
+        foreach (var drawer in _drawers)
+        {
+            Destroy(drawer.gameObject);
+        }
+
+        _drawers.Clear();
+        _currentDrawer = null;
+    }
+
+    public void ResetActionDrawers()
+    {
+        foreach (var drawer in _drawers)
+        {
+            if (drawer is ActionDrawer actionDrawer)
+            {
+                actionDrawer.ResetAll();
+            }
+        }
     }
 }

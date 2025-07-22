@@ -31,6 +31,7 @@ public class BossTimelineRenderer : MonoBehaviour
             return;
         }
 
+        _actionQueue.Clear();
         float totalTime = 0;
 
         foreach (var mechanic in _bossTimeline.Mechanics)
@@ -104,7 +105,7 @@ public class BossTimelineRenderer : MonoBehaviour
 
     private void SpawnAction(BossAction action)
     {
-        if (action.Hitbox == null)
+        if (action == null || action.Hitbox == null)
         {
             return;
         }
@@ -116,5 +117,6 @@ public class BossTimelineRenderer : MonoBehaviour
     public void SetBossTimeline(BossTimeline bossTimeline)
     {
         _bossTimeline = bossTimeline;
+        InitializeTimeline();
     }
 }

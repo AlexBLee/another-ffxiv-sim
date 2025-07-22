@@ -28,6 +28,11 @@ public class Vector3InputField : MonoBehaviour
 
     public void SetValue(Vector3 value)
     {
+        if (value == Vector3.zero)
+        {
+            value = Vector3.one;
+        }
+
         _xInputField.text = value.x.ToString(CultureInfo.InvariantCulture);
         _yInputField.text = value.y.ToString(CultureInfo.InvariantCulture);
         _zInputField.text = value.z.ToString(CultureInfo.InvariantCulture);

@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameplayUI: {fileID: 1112089109}
   _editorUI: {fileID: 320518232}
-  _inEditorMode: 1
+  _inEditorMode: 0
 --- !u!4 &596407041
 Transform:
   m_ObjectHideFlags: 0
@@ -3671,19 +3671,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1586460663}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1201130966}
-        m_TargetAssemblyTypeName: BossTimelineEditor, Assembly-CSharp
-        m_MethodName: AddActionDrawer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1586460663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4189,19 +4177,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1775157048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1201130966}
-        m_TargetAssemblyTypeName: BossTimelineEditor, Assembly-CSharp
-        m_MethodName: AddMechanicDrawer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1775157048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5206,19 +5182,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2035723180}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1201130966}
-        m_TargetAssemblyTypeName: BossTimelineEditor, Assembly-CSharp
-        m_MethodName: AddVariantDrawer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2035723180
 MonoBehaviour:
   m_ObjectHideFlags: 0
