@@ -38,10 +38,14 @@ public class BossMechanic
     public float Time;
     public List<MechanicVariantList> MechanicVariants;
 
-    public void AddMechanicVariant()
+    public MechanicVariantList AddMechanicVariant()
     {
         MechanicVariants ??= new List<MechanicVariantList>();
-        MechanicVariants.Add(new MechanicVariantList());
+
+        var mechanicVariant = new MechanicVariantList();
+        MechanicVariants.Add(mechanicVariant);
+
+        return mechanicVariant;
     }
 
     public List<BossAction> GetRandomBossActionList()

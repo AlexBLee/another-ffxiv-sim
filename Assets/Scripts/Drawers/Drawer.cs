@@ -19,7 +19,10 @@ public abstract class Drawer : MonoBehaviour
     private void OnToggleSelected(bool value)
     {
         if (value)
+        {
             UIManager.Instance.EditorUI.OnNewButtonsClicked(this);
+            UIManager.Instance.EditorUI.BossTimelineEditor.SetCurrentSelectedDrawer(this);
+        }
     }
 
     public void SetToggleGroup(ToggleGroup toggleGroup)

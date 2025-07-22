@@ -9,6 +9,8 @@ public class EditorUI : MonoBehaviour
     [SerializeField] private Button _newVariantButton;
     [SerializeField] private Button _newActionButton;
 
+    public BossTimelineEditor BossTimelineEditor => _bossTimelineEditor;
+
     public void CreateNewBossTimeline()
     {
         _bossTimelineEditor.CreateNewBossTimeline();
