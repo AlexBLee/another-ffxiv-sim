@@ -117,3 +117,15 @@ MonoBehaviour:
         Location: {x: 6.2, y: 0.77, z: 22.7}
         Rotation: {x: 0, y: 0, z: 0}
         Scale: {x: 3.31, y: 47, z: 1}
+  - Name: 
+    Time: 0
+    MechanicVariants:
+    - BossActions:
+      - Hitbox: {fileID: 9036609322426120251, guid: 327d6b497f3b0674f9f00a0df34be7c7, type: 3}
+        TargetBehaviour: 0
+        TargetCount: 0
+        Time: 0
+        CastTime: 0
+        Location: {x: 0, y: 0, z: 0}
+        Rotation: {x: 0, y: 0, z: 0}
+        Scale: {x: 0, y: 0, z: 0}

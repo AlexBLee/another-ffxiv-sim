@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +11,13 @@ public class Vector3InputField : MonoBehaviour
 
     public event Action<Vector3> OnValueChangedCallback;
 
+    private void Start()
+    {
+        _xInputField.onEndEdit.AddListener(OnValueChanged);
+        _yInputField.onEndEdit.AddListener(OnValueChanged);
+        _zInputField.onEndEdit.AddListener(OnValueChanged);
+    }
+
     public Vector3 GetValue()
     {
         float x = float.TryParse(_xInputField.text, out var xResult) ? xResult : 0f;
@@ -18,11 +26,11 @@ public class Vector3InputField : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    private void Start()
+    public void SetValue(Vector3 value)
     {
-        _xInputField.onEndEdit.AddListener(OnValueChanged);
-        _yInputField.onEndEdit.AddListener(OnValueChanged);
-        _zInputField.onEndEdit.AddListener(OnValueChanged);
+        _xInputField.text = value.x.ToString(CultureInfo.InvariantCulture);
+        _yInputField.text = value.y.ToString(CultureInfo.InvariantCulture);
+        _zInputField.text = value.z.ToString(CultureInfo.InvariantCulture);
     }
 
     private void OnValueChanged(string arg)

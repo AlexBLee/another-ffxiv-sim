@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using AYellowpaper.SerializedCollections;
 using TMPro;
+using TransformHandles;
 using UnityEngine;
 
 public class ActionDrawer : Drawer
@@ -25,6 +26,7 @@ public class ActionDrawer : Drawer
 
     private BossAction _bossAction;
     private Hitbox _currentHitbox;
+    private Handle _currentHandle;
 
     private void OnEnable()
     {
@@ -55,6 +57,27 @@ public class ActionDrawer : Drawer
         _scaleInputField.OnValueChangedCallback -= OnScaleChanged;
     }
 
+    private void OnHandleInteraction(Handle handle)
+    {
+        var hitboxTransform = _currentHitbox.transform;
+
+        switch (_currentHandle.type)
+        {
+            case HandleType.Position:
+                OnLocationChanged(hitboxTransform.localPosition);
+                _locationInputField.SetValue(hitboxTransform.localPosition);
+                break;
+            case HandleType.Rotation:
+                OnLocationChanged(hitboxTransform.localRotation.eulerAngles);
+                _rotationInputField.SetValue(hitboxTransform.localRotation.eulerAngles);
+                break;
+            case HandleType.Scale:
+                OnScaleChanged(hitboxTransform.localScale);
+                _scaleInputField.SetValue(hitboxTransform.localScale);
+                break;
+        }
+    }
+
     public void SetBossAction(BossAction bossAction)
     {
         _bossAction = bossAction;
@@ -63,6 +86,9 @@ public class ActionDrawer : Drawer
         _bossAction.Hitbox = _hitboxCache[HitboxType.Line];
 
         _currentHitbox = Instantiate(_hitboxCache[HitboxType.Line]);
+        _currentHandle = TransformHandleManager.Instance.CreateHandle(_currentHitbox.transform);
+
+        _currentHandle.OnInteractionEvent += OnHandleInteraction;
     }
 
     private void InitializeDropdown(TMP_Dropdown dropdown, Type enumType)
@@ -81,9 +107,15 @@ public class ActionDrawer : Drawer
 
         _bossAction.Hitbox = _hitboxCache[(HitboxType)shapeIndex];
 
-        var nextHitbox = Instantiate(_hitboxCache[(HitboxType)shapeIndex]);
+        TransformHandleManager.Instance.RemoveHandle(_currentHandle);
+        _currentHandle.OnInteractionEvent -= OnHandleInteraction;
+
         Destroy(_currentHitbox.gameObject);
+
+        var nextHitbox = Instantiate(_hitboxCache[(HitboxType)shapeIndex]);
         _currentHitbox = nextHitbox;
+        _currentHandle = TransformHandleManager.Instance.CreateHandle(_currentHitbox.transform);
+        _currentHandle.OnInteractionEvent += OnHandleInteraction;
     }
 
     private void OnTargetBehaviourDropdownValueChanged(int targetBehaviourIndex)
@@ -96,24 +128,34 @@ public class ActionDrawer : Drawer
         _bossAction.TargetBehaviour = (TargetBehaviour)targetBehaviourIndex;
     }
 
-    private void OnTimeInputValueChanged(string arg0)
+    private void OnTimeInputValueChanged(string text)
     {
         if (_bossAction == null)
         {
             return;
         }
 
-        _bossAction.Time = float.Parse(arg0);
+        if (!float.TryParse(text, out float time))
+        {
+            return;
+        }
+
+        _bossAction.Time = time;
     }
 
-    private void OnCastTimeInputValueChanged(string arg0)
+    private void OnCastTimeInputValueChanged(string text)
     {
         if (_bossAction == null)
         {
             return;
         }
 
-        _bossAction.CastTime = float.Parse(arg0);
+        if (!float.TryParse(text, out float castTime))
+        {
+            return;
+        }
+
+        _bossAction.CastTime = castTime;
     }
 
     private void OnLocationChanged(Vector3 vector)
@@ -124,6 +166,7 @@ public class ActionDrawer : Drawer
         }
 
         _bossAction.Location = vector;
+        _currentHitbox.transform.localPosition = vector;
     }
 
     private void OnRotationChanged(Vector3 vector)
@@ -134,6 +177,7 @@ public class ActionDrawer : Drawer
         }
 
         _bossAction.Rotation = vector;
+        _currentHitbox.transform.localRotation = new Quaternion(vector.x, vector.y, vector.z, vector.z);
     }
 
     private void OnScaleChanged(Vector3 vector)
@@ -144,6 +188,6 @@ public class ActionDrawer : Drawer
         }
 
         _bossAction.Scale = vector;
+        _currentHitbox.transform.localScale = vector;
     }
-
 }

@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.orkunmanap.runtime-transform-handles": {
+      "version": "https://github.com/manaporkun/UnityRuntimeTransformHandles.git?path=/Packages/runtime-transform-handles",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "e23645d6d02863dd7969d0589e12f9cdb481e08b"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.8",
       "depth": 0,
