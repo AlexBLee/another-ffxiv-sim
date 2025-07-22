@@ -71,6 +71,7 @@ public class BossAction
     public Vector3 Scale;
 }
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/BossTimeline", order = 1)]
 public class BossTimeline : ScriptableObject
 {

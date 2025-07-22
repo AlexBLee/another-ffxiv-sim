@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,11 +15,13 @@ public class BossTimelineEditor : MonoBehaviour
     [SerializeField] private ActionDrawer _actionContainer;
 
     private BossTimeline _bossTimeline;
-
     private BossMechanic _currentBossMechanic;
     private Drawer _currentDrawer;
+
     private List<BossMechanic> _bossMechanics = new();
     private List<Drawer> _drawers = new();
+
+    public BossTimeline BossTimeline => _bossTimeline;
 
     private void Start()
     {
@@ -28,6 +31,12 @@ public class BossTimelineEditor : MonoBehaviour
     public void CreateNewBossTimeline()
     {
         _bossTimeline = ScriptableObject.CreateInstance<BossTimeline>();
+        _bossTimelineRenderer.SetBossTimeline(_bossTimeline);
+    }
+
+    public void LoadBossTimeline(BossTimeline bossTimeline)
+    {
+        _bossTimeline = bossTimeline;
         _bossTimelineRenderer.SetBossTimeline(_bossTimeline);
     }
 
